@@ -11,7 +11,7 @@
 
 
     <div class="panel-body">
-    <form class="form-horizontal m-t-20" action="index.html">
+    <form class="form-horizontal m-t-20" enctype="multipart/form-data" method="post" name="loginform">
         
         <div class="form-group ">
             <div class="col-xs-12">
@@ -36,7 +36,8 @@
                 <a href="page-recoverpw.html" class="text-dark"><i class="fa fa-lock m-r-5"></i> Lupa Password ?</a>
             </div>
         </div>
-    </form> 
+    </form>
+    <div></div> 
     
     </div>   
     </div>                              
@@ -54,6 +55,31 @@
 
 <script>
     var resizefunc = [];
+</script>
+
+<script>
+
+var form = document.forms.namedItem("loginform");
+form.addEventListener('submit', function(ev) {
+
+      oData = new FormData(form);
+
+  oData.append("CustomField", "This is some extra data");
+
+  var oReq = new XMLHttpRequest();
+  oReq.open("POST", "elearning.test/api/v1/login", true);
+  oReq.onload = function(oEvent) {
+    if (oReq.status == 200) {
+        console.log("sukses")
+ 
+    } else {
+      console.log("Maaf Gagal")
+    }
+  };
+
+  oReq.send(oData);
+  ev.preventDefault();
+}, false);
 </script>
 
 
