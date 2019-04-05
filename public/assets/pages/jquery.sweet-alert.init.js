@@ -5,8 +5,11 @@
 * SweetAlert
 */
 
+
+
 !function ($) {
     "use strict";
+    
 
     var SweetAlert = function () {
     };
@@ -20,9 +23,134 @@
         });
 
         //A title with a text under
-        $('#sa-title').click(function () {
+        $('#sa-title').click(function () {  
             swal("Here's a message!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat, tincidunt vitae ipsum et, pellentesque maximus enim. Mauris eleifend ex semper, lobortis purus sed, pharetra felis")
         });
+
+        $('#daftar').click(function () {
+
+            var workshop = $('input[name=workshop]:checked').val()
+            var data = {
+                "name":"Dedy Kurniawan Santoso",
+                "password":"Samarinda1234",
+                "c_password" : "Samarinda1234", 
+                "email":"dedyjoomla1234@gamail.com",
+                "attendedWorkshop":true,
+                "school": 
+                    {
+                        "propinsi": "Prov. D.K.I. Jakarta",
+                        "kode_kab_kota": "010100  ",
+                        "kabupaten_kota": "Kab. Kepulauan Seribu",
+                        "kode_kec": "010101  ",
+                        "kecamatan": "Kec. Kepulauan Seribu Selatan",
+                        "npsn": "20104474",
+                        "sekolah": "SD NEGERI PULAU TIDUNG 02 PG",
+                        "bentuk": "SD",
+                        "status": "N",
+                        "alamat_jalan": "Jl. Lapangan Hijau Rt. 05/03",
+                        "lintang": "-5.7965000",
+                        "bujur": "106.4956000"
+                    }
+                }
+
+                axios({
+                    method: 'post',
+                    url: 'elearning.test/api/v1/register',
+                    withCredentials: true,
+                    crossdomain: true,
+                    dataType : "json",
+                    data:  $.param (data),
+                    contentType : "application/x-www-form-urlencoded"    
+                // headers: { 
+                //   "Content-Type": "application/x-www-form-urlencoded",
+                //   "Accept" : "application/x-www-form-urlencoded"
+                // }
+              }).then(function (response) {
+                console.log("Heade With Authentication :" + response);
+              })
+              .catch(function (error) {
+                console.log("Post Error : " +error);
+              }); 
+
+            // if(document.getElementById('nama').value=="" || 
+            //    document.getElementById('email').value=="" || 
+            //    document.getElementById('password').value=="" || 
+            //    document.getElementById('repeat_password').value=="" ||
+            //    document.getElementById('nama_sekolah').value=="" ||
+            //    $('input[name=workshop]:checked').val() == undefined
+            // ){
+            //     swal("Maaf", "Isilah semua data yang ada")
+            // }else{
+            //     if(document.getElementById('password').value==document.getElementById('repeat_password').value){
+            //         var workshop = $('input[name=workshop]:checked').val()
+            //         var data = {
+            //             name : document.getElementById('nama').value, 
+            //             password : document.getElementById('password').value, 
+            //             c_password :document.getElementById('repeat_password').value, 
+            //             email : document.getElementById('email').value, 
+            //             attendedWorkshop : workshop, 
+            //             school : {
+            //                 propinsi: document.getElementById('propinsi').value ,
+            //                 kode_kab_kota: document.getElementById('kode_kab_kota').value   ,
+            //                 kabupaten_kota: document.getElementById('kabupaten_kota').value ,
+            //                 kode_kec: document.getElementById('kode_kec').value ,
+            //                 kecamatan: document.getElementById('kecamatan').value  ,
+            //                 npsn: document.getElementById('npsn').value ,
+            //                 sekolah: document.getElementById('nama_sekolah').value  ,
+            //                 bentuk: document.getElementById('bentuk').value,
+            //                 status: document.getElementById('status').value ,
+            //                 alamat_jalan: document.getElementById('alamat_jalan').value,
+            //                 lintang: document.getElementById('lintang').value,
+            //                 bujur: document.getElementById('bujur').value
+            //             }
+            //             }
+            //             axios({
+            //                 method: 'post',
+            //                 url: 'elearning.test/api/v1/register',
+            //                 withCredentials: true,
+            //                 crossdomain: true,
+            //                 data:  data,    
+            //             headers: { 
+            //               "Content-Type": "application/x-www-form-urlencoded",
+            //               "Accept" : "application/x-www-form-urlencoded"
+            //             }
+            //           }).then(function (response) {
+            //             console.log("Heade With Authentication :" + response);
+            //           })
+            //           .catch(function (error) {
+            //             console.log("Post Error : " +error);
+            //           }); 
+
+
+            //             // $.ajax({
+            //             //     type: 'POST',  
+            //             //     dataType: 'json',
+            //             //     data: $.param (data),
+            //             //     url: 'elearning.test/api/v1/register',
+            //             //     headers     : {
+            //             //                     'Content-Type': 'application/x-www-form-urlencoded', 
+            //             //                     'Accept' : 'application/x-www-form-urlencoded'
+            //             //                   }
+            //             //   })
+            //             //   .done(function(data, status){
+                            
+            //             //   })
+            //             //   .fail(function(data, status){
+            //             //       console.log(status)
+            //             //       console.log(data)
+            //             //       alert("hello")
+            //             //   })
+
+  
+            //     }else{
+            //         swal("Maaf", "Masukan untuk Password dan Ulangi Password tidak sama, tolong perbaiki kembali")
+            //     }
+            // }
+
+            
+        });
+
+    
 
         //Success Message
         $('#sa-success').click(function () {

@@ -36,4 +36,12 @@ class PagesController extends Controller
     public function detailmateri(){
         return view('detailmateri');
     }
+
+    public function login(){
+        return view('page/login');
+    }
+
+    public function register(){
+        return view('page/register');
+    }
 }

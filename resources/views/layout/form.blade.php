@@ -27,6 +27,10 @@
         <link href="{{asset('assets/css/pages.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet" type="text/css" />
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
