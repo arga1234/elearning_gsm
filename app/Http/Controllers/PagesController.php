@@ -9,6 +9,9 @@ class PagesController extends Controller
     public function index(){
         return view('welcome');
     }
+    public function elearning(){
+        return view('elearning');
+    }
     public function berita(){
         return view('berita');
     }
@@ -43,5 +46,9 @@ class PagesController extends Controller
 
     public function register(){
         return view('page/register');
+    }
+
+    public function resetpassword(){
+        return view('page/resetpassword');
     }
 }

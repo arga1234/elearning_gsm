@@ -1,6 +1,10 @@
 @extends('layout.basiclayout')
 @section('content')
 
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link href="assets/plugins/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet" type="text/css">
+
+
 <div class="account-pages"></div>
 <div class="clearfix"></div>
 <div class="wrapper-page">
@@ -15,19 +19,19 @@
         
         <div class="form-group ">
             <div class="col-xs-12">
-                <input class="form-control" type="text" required="" placeholder="Username">
+                <input class="form-control" type="text" required="" id="email" placeholder="Email" value="">
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-xs-12">
-                <input class="form-control" type="password" required="" placeholder="Password">
+                <input class="form-control" type="password" required="" id="password" placeholder="Password" value="">
             </div>
         </div>
         
         <div class="form-group text-center m-t-40">
             <div class="col-xs-12">
-                <button class="btn btn-info btn-block text-uppercase waves-effect waves-light" type="submit">Login</button>
+                <button class="btn btn-info btn-block text-uppercase waves-effect waves-light" type="button" id="login">Login</button>
             </div>
         </div>
 
@@ -43,7 +47,7 @@
     </div>                              
         <div class="row">
         <div class="col-sm-12 text-center">
-            <p>Belum punya akun ? <a href="page-register.html" class="text-primary m-l-5"><b>Daftar Sekarang</b></a></p>
+            <p>Belum punya akun ? <a href="{{ url('/daftar') }}" class="text-primary m-l-5"><b>Daftar Sekarang</b></a></p>
                 
             </div>
     </div>
@@ -57,8 +61,7 @@
     var resizefunc = [];
 </script>
 
-<script>
-
+{{-- <script>
 var form = document.forms.namedItem("loginform");
 form.addEventListener('submit', function(ev) {
 
@@ -80,7 +83,12 @@ form.addEventListener('submit', function(ev) {
   oReq.send(oData);
   ev.preventDefault();
 }, false);
-</script>
+</script> --}}
+
+{{-- Sweet Alerts --}}
+<script src="{{asset('assets/plugins/bootstrap-sweetalert/sweet-alert.min.js')}}"></script>
+<script src="{{asset('assets/pages/jquery.sweet-alert.init.js')}}"></script>
+
 
 
 

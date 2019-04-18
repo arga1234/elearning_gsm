@@ -219,7 +219,7 @@
                         <li>
                             <a href="javascript:void(0);"><i class=" ti-home"></i><span>Homepage</span><span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="{{ url('/') }}">Welcome Page</a></li>
+                                <li><a href="{{ url('/elearning') }}">Welcome Page</a></li>
                                 <li><a href="{{ url('/berita') }}">Berita GSM</a></li>
                                 <li><a href="{{ url('/persebaran') }}">Persebaran GSM</a></li>
                             </ul>
@@ -303,6 +303,28 @@
         <script src="{{asset('assets/plugins/owl.carousel/dist/owl.carousel.min.js')}}"></script>
     <script>
       jQuery(document).ready(function($) {
+        function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+        }
+        var token_user=getCookie("token_login_user_gsm")
+        console.log(token_user)
+        if(token_user==""){
+            window.location="login"
+        }
+
+
                 //owl carousel
                 $("#owl-slider").owlCarousel({
                     loop:true,
@@ -369,72 +391,5 @@
 				})
             });
     </script>
-    <script>
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 5,
-            center: {lat: -2.5489, lng: 118.0149}
-        });
-
-        setMarkers(map);
-        }
-
-
-
-        function setMarkers(map) {
-        $.ajax({
-        type: 'GET',
-        url: "http://localhost/elearning/public/api/v1/school-gsm/map"
-        })
-        .done(function(data){
-        var school = []
-        for(i=0;i<data.data.length;i++){
-        school += '["'
-        school += data.data[i].sekolah
-        school += '",'
-        school += data.data[i].lokasi[1]
-        school += ','
-        school += data.data[i].lokasi[0]
-        school += ']'
-        if (i==data.data.length-1) {
-            school +=''
-        }else {
-            school +=','
-        }
-        }
-        var obj2 = JSON.parse("["+school+"]");
-        var schools = obj2
-        var image = {
-            url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-            // This marker is 20 pixels wide by 32 pixels high.
-            size: new google.maps.Size(20, 32),
-            // The origin for this image is (0, 0).
-            origin: new google.maps.Point(0, 0),
-            // The anchor for this image is the base of the flagpole at (0, 32).
-            anchor: new google.maps.Point(0, 32)
-        };
-        var shape = {
-            coords: [1, 1, 1, 20, 18, 20, 18, 1],
-            type: 'poly'
-        };
-        for (var i = 0; i < schools.length; i++) {
-            var school = schools[i];
-            var marker = new google.maps.Marker({
-            position: {lat: school[1], lng: school[2]},
-            map: map,
-            icon: image,
-            shape: shape,
-            title: school[0],
-            zIndex: school[3]
-            })
-        }
-        })
-        }
-
-
-    </script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS6ZdI6zn_QX7ceEWJtdFzdCMuHQijNmc&callback=initMap">
-        </script>
     </body>
 </html>

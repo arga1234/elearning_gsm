@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/elearning', 'PagesController@elearning');
 Route::get('/berita', 'PagesController@berita');
 Route::get('/persebaran', 'PagesController@persebaran');
 Route::get('/detailuser', 'PagesController@detailuser');
@@ -23,3 +24,4 @@ Route::get('/materiadvanced', 'PagesController@materiadvanced');
 Route::get('/detailmateri', 'PagesController@detailmateri');
 Route::get('/login', 'PagesController@login');
 Route::get('/daftar', 'PagesController@register');
+Route::get('/resetpassword', 'PagesController@resetpassword');

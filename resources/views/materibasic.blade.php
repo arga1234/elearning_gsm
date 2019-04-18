@@ -17,7 +17,7 @@
                                                     Materi Basic
                                                     </b>
                                                     </h1>
-                                                    <p>Materi basic merupakan materi yang wajib dipelajari sebelum lanjut ke materi advanced</p>
+                                                    <p style="margin:10px">Materi basic merupakan materi yang wajib dipelajari sebelum lanjut ke materi advanced</p>
                                                 </div>
                                             </div>
                                         </div>

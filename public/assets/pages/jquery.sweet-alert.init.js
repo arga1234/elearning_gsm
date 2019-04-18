@@ -16,6 +16,7 @@
 
     //examples
     SweetAlert.prototype.init = function () {
+        
 
         //Basic
         $('#sa-basic').click(function () {
@@ -27,7 +28,75 @@
             swal("Here's a message!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat, tincidunt vitae ipsum et, pellentesque maximus enim. Mauris eleifend ex semper, lobortis purus sed, pharetra felis")
         });
 
+        $('#login').click(function(){
+            $(document).ajaxStart(function() { Pace.restart(); });
+            // swal("Maaf", "Isilah semua data yang ada")
+            if(document.getElementById('email').value == "" ||
+            document.getElementById('password').value == ""
+            ){
+                // alert("Hello")
+                swal("Isilah semua field yang ada")
+            }else{
+               var data = {
+                    email : document.getElementById('email').value,
+                    password : document.getElementById('password').value,
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost/elearning/public/api/v1/login',
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Accept"      : "application/x-www-form-urlencoded"
+                    },
+                    data: data
+                    })
+                    .done(function(data, status){
+                     swal("Selamat", "Anda berhasil login")
+                     console.log(data.data._id)
+                    
+                     localStorage.setItem('data_user_elearning_gsm', JSON.stringify(data.data))
+                     setCookie("token_login_user_gsm", data.token, 30)
+                     function setCookie(cname,cvalue,exdays) {
+                     var d = new Date();
+                     d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                     var expires = "expires=" + d.toGMTString();
+                     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                     }
+              
+                     function getCookie(cname) {
+                     var name = cname + "=";
+                     var decodedCookie = decodeURIComponent(document.cookie);
+                     var ca = decodedCookie.split(';');
+                     for(var i = 0; i < ca.length; i++) {
+                         var c = ca[i];
+                         while (c.charAt(0) == ' ') {
+                         c = c.substring(1);
+                         }
+                         if (c.indexOf(name) == 0) {
+                         return c.substring(name.length, c.length);
+                         }
+                     }
+                     return "";
+                     }
+                    //  var token_user=getCookie("token_login_user_gsm")
+                    //  console.log(token_user)
+                     window.location="elearning"
+
+                    })
+                    .fail(function(data,status){
+                        console.log(data)
+                        console.log(status)
+                        swal("Maaf", "Terjadi kesalahan, silahkan cek koneksi internet Anda")
+
+                    })
+
+
+            }
+        })
+
         $('#daftar').click(function () {
+            $(document).ajaxStart(function() { Pace.restart(); });
             if(document.getElementById('nama').value=="" || 
                document.getElementById('email').value=="" || 
                document.getElementById('password').value=="" || 
@@ -60,44 +129,27 @@
                             bujur: document.getElementById('bujur').value
                         }
                         }
-                        axios({
-                            method: 'post',
-                            url: 'elearning.test/api/v1/register',
-                            withCredentials: true,
-                            crossdomain: true,
-                            data:  data,    
-                        headers: { 
-                          "Content-Type": "application/x-www-form-urlencoded",
-                          "Accept" : "application/x-www-form-urlencoded"
-                        }
-                      }).then(function (response) {
-                        console.log("Heade With Authentication :" + response);
-                      })
-                      .catch(function (error) {
-                        console.log("Post Error : " +error);
-                      }); 
+                        $.ajax({
+                            type: 'POST',
+                            url: 'http://localhost/elearning/public/api/v1/register',
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                                "Accept"      : "application/x-www-form-urlencoded"
+                            },
+                            data: data
+                            })
+                            .done(function(data, status){
+                                console.log(data)
+                                console.log(status)
+                             swal("Selamat", "Anda berhasil mendaftar, silahkan masukan email dan password di halaman login ")
+                          
+                            })
+                            .fail(function(data,status){
+                                console.log(data)
+                                console.log(status)
+                                swal("Maaf", "Terjadi kesalahan, silahkan cek koneksi internet Anda")
 
-
-            //             // $.ajax({
-            //             //     type: 'POST',  
-            //             //     dataType: 'json',
-            //             //     data: $.param (data),
-            //             //     url: 'elearning.test/api/v1/register',
-            //             //     headers     : {
-            //             //                     'Content-Type': 'application/x-www-form-urlencoded', 
-            //             //                     'Accept' : 'application/x-www-form-urlencoded'
-            //             //                   }
-            //             //   })
-            //             //   .done(function(data, status){
-                            
-            //             //   })
-            //             //   .fail(function(data, status){
-            //             //       console.log(status)
-            //             //       console.log(data)
-            //             //       alert("hello")
-            //             //   })
-
-  
+                            })
                 }else{
                     swal("Maaf", "Masukan untuk Password dan Ulangi Password tidak sama, tolong perbaiki kembali")
                 }

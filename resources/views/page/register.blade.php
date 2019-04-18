@@ -109,7 +109,7 @@
                         <div class="col-lg-12">
                             <div class="form-group text-right m-t-20 m-b-0">
                                 <div style="text-align:center" class="col-xs-12">
-                                    <button  class="btn btn-info text-uppercase waves-effect waves-light w-sm" id="daftar" onclick="daftar()">
+                                    <button  class="btn btn-info text-uppercase waves-effect waves-light w-sm" id="daftar">
                                         Daftar
                                     </button>
                                 </div>
@@ -168,45 +168,6 @@
     })
 </script>
 <script>
-    function daftar(){
-        var workshop = $('input[name=workshop]:checked').val()
-        var data = {
-            "name" : document.getElementById('nama').value, 
-            "password" : document.getElementById('password').value, 
-            "c_password" :document.getElementById('repeat_password').value, 
-            "email" : document.getElementById('email').value, 
-            "attendedWorkshop" : workshop, 
-            "school" : {
-                "propinsi": document.getElementById('propinsi').value ,
-                "kode_kab_kota": document.getElementById('kode_kab_kota').value   ,
-                "kabupaten_kota": document.getElementById('kabupaten_kota').value ,
-                "kode_kec": document.getElementById('kode_kec').value ,
-                "kecamatan": document.getElementById('kecamatan').value  ,
-                "npsn": document.getElementById('npsn').value ,
-                "sekolah": document.getElementById('nama_sekolah').value  ,
-                "bentuk": document.getElementById('bentuk').value,
-                "status": document.getElementById('status').value ,
-                "alamat_jalan": document.getElementById('alamat_jalan').value,
-                "lintang": document.getElementById('lintang').value,
-                "bujur": document.getElementById('bujur').value
-            }
-            }
-
-            $.ajax({
-            type: 'POST',
-            url: 'elearning.test/api/v1/register',
-            headers     : {
-                            "Content-Type": "application/json", 
-                            "Accept" : "application/json"
-                          }, 
-            data: data
-            })
-            .done(function(data){
-                console.log(data)
-                alert("hello")
-            })
-    }
-
     function sekolah(id){
         var url = "http://jendela.data.kemdikbud.go.id/api/index.php/Csekolah/detailSekolahGET?mst_kode_wilayah="+id+"&bentuk=sd"
         console.log(url)

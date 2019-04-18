@@ -17,7 +17,7 @@
                                                     Materi Advanced
                                                     </b>
                                                     </h1>
-                                                    <p>Materi advanced merupakan materi lanjutan yang dibutuhkan guru membentuk perubahan model GSM</p>
+                                                    <p style="margin:10px">Materi advanced merupakan materi lanjutan yang dibutuhkan guru membentuk perubahan model GSM</p>
                                                 </div>
                                             </div>
                                         </div>

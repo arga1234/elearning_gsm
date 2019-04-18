@@ -40,155 +40,11 @@
                                     </div>
                                 </div>
                  <!-- Blog -->
-                    <div class="col-md-4">
-                        <div class="blog-box-one">
-                            <div class="cover-wrapper">
-                                <a href="#"><img alt="Blog-img" src="{{asset('assets/images/blogs/5.jpg')}}"
-                                                 class="img-responsive"/></a>
-                            </div>
-                            <div class="post-info">
-                                <div class="date">
-                                    <span class="day">16</span><br>
-                                    <span class="month">Mar</span>
-                                </div>
-        
-                                <div class="meta-container">
-                                    <a href="#">
-                                        <h4 class="text-overflow m-t-0">Beautiful Image Blog Post</h4>
-                                    </a>
-                                    <div class="font-13">
-                                        <span class="meta">Posted by gsm in <a href="#"><b>GSM Number one in indonesia </b></a></span>
-                                    </div>
-                                </div>
-        
-                                <p class="text-muted m-b-0">
-                                    Nunc nec dui vitae urna cursus lacinia. In
-                                    venenatis eget justo in dictum. Vestibulum
-                                    auctor raesent quisnm.Lorem Ipsum is simply dummy text
-                                    of the printing and typesetting industry. Simply dummy
-                                    text of the printing and typesetting.
-                                </p>
-        
-                                <div class="row m-t-10">
-                                    <div class="col-xs-6">
-                                        <div class="m-t-10 blog-widget-action">
-                                            <a href="javascript:void(0)">
-                                                <i class="mdi md-favorite"></i> <span>54</span>
-                                            </a>
-                                            <a href="javascript:void(0)">
-                                                <i class="mdi md-comment"></i> <span>26</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 text-right">
-                                        <a href="" class="btn btn-sm waves-effect btn-white">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- end blog -->
+                 <div class="col-md-12" id="blog_gsm">
 
-                    <div class="col-md-4">
-                        <div class="blog-box-one">
-                            <div class="cover-wrapper">
-                                <a href="#"><img alt="Blog-img" src="{{asset('assets/images/blogs/5.jpg')}}"
-                                                 class="img-responsive"/></a>
-                            </div>
-                            <div class="post-info">
-                                <div class="date">
-                                    <span class="day">16</span><br>
-                                    <span class="month">Mar</span>
-                                </div>
-        
-                                <div class="meta-container">
-                                    <a href="#">
-                                        <h4 class="text-overflow m-t-0">Beautiful Image Blog Post</h4>
-                                    </a>
-                                    <div class="font-13">
-                                        <span class="meta">Posted by gsm in <a href="#"><b>GSM Number one in indonesia </b></a></span>
-                                    </div>
-                                </div>
-        
-                                <p class="text-muted m-b-0">
-                                    Nunc nec dui vitae urna cursus lacinia. In
-                                    venenatis eget justo in dictum. Vestibulum
-                                    auctor raesent quisnm.Lorem Ipsum is simply dummy text
-                                    of the printing and typesetting industry. Simply dummy
-                                    text of the printing and typesetting.
-                                </p>
-        
-                                <div class="row m-t-10">
-                                    <div class="col-xs-6">
-                                        <div class="m-t-10 blog-widget-action">
-                                            <a href="javascript:void(0)">
-                                                <i class="mdi md-favorite"></i> <span>54</span>
-                                            </a>
-                                            <a href="javascript:void(0)">
-                                                <i class="mdi md-comment"></i> <span>26</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 text-right">
-                                        <a href="" class="btn btn-sm waves-effect btn-white">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- end blog -->
-                    <div class="col-md-4">
-                        <div class="blog-box-one">
-                            <div class="cover-wrapper">
-                                <a href="#"><img alt="Blog-img" src="{{asset('assets/images/blogs/5.jpg')}}"
-                                                 class="img-responsive"/></a>
-                            </div>
-                            <div class="post-info">
-                                <div class="date">
-                                    <span class="day">16</span><br>
-                                    <span class="month">Mar</span>
-                                </div>
-        
-                                <div class="meta-container">
-                                    <a href="#">
-                                        <h4 class="text-overflow m-t-0">Beautiful Image Blog Post</h4>
-                                    </a>
-                                    <div class="font-13">
-                                        <span class="meta">Posted by gsm in <a href="#"><b>GSM Number one in indonesia </b></a></span>
-                                    </div>
-                                </div>
-        
-                                <p class="text-muted m-b-0">
-                                    Nunc nec dui vitae urna cursus lacinia. In
-                                    venenatis eget justo in dictum. Vestibulum
-                                    auctor raesent quisnm.Lorem Ipsum is simply dummy text
-                                    of the printing and typesetting industry. Simply dummy
-                                    text of the printing and typesetting.
-                                </p>
-        
-                                <div class="row m-t-10">
-                                    <div class="col-xs-6">
-                                        <div class="m-t-10 blog-widget-action">
-                                            <a href="javascript:void(0)">
-                                                <i class="mdi md-favorite"></i> <span>54</span>
-                                            </a>
-                                            <a href="javascript:void(0)">
-                                                <i class="mdi md-comment"></i> <span>26</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 text-right">
-                                        <a href="" class="btn btn-sm waves-effect btn-white">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- end blog -->
+                 </div>
                  
-                 
-
-
-
-
-                            
+                                         
                     </div> <!-- container -->
                                
                 </div> <!-- content -->
@@ -198,7 +54,55 @@
                 </footer>
 
             </div>
-            
+            <script>
+            $(document).ready(function(){
+                console.log("hello")
+                $.get("https://www.sekolahmenyenangkan.org/wp-json/wp/v2/posts", function(data, status){
+                  var jumlah_berita = data.length -1
+                  var bulan_string = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
+                  for(var i = 0; i<jumlah_berita;i++){
+                    var data_tanggal = new Date (data[i].date)
+                    var tanggal = data_tanggal.getDate()
+                    var bulan = data_tanggal.getMonth()
+                    var title= data[i].title.rendered
+                    var title_limit = title.substr(0, 33)
+                    $('#blog_gsm').append(
+                    '<div class="col-md-4">'+
+                    '<div class="blog-box-one">'+
+                        '<div class="cover-wrapper">'+
+                            '<a href="'+data[i].link+'" target="_blank"><img alt="Blog-img" src="'+data[i].jetpack_featured_media_url+'" class="img-responsive"/></a>'+
+                        '</div>'+
+                        '<div class="post-info">'+
+                            '<div class="date">'+
+                                '<span class="day">'+tanggal+'</span><br>'+
+                                '<span class="month">'+bulan_string[bulan]+'</span>'+
+                            '</div>'+
+    
+                            '<div class="meta-container">'+
+                                '<a href="'+data[i].link+'" target="_blank">'+
+                                    '<h5 class="text-overflow m-t-0" style="">'+title_limit+'..</h5>'+
+                                '</a>'+
+                                '<div class="font-13">'+
+                                    '<span class="meta">Posted by : <a href="#"><b>Admin GSM</b></a></span>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="row m-t-10">'+
+                                '<div class="col-xs-6">'+
+                                '</div>'+
+                                '<div class="col-xs-6 text-right">'+
+                                    '<a href="'+data[i].link+'" target="_blank" class="btn btn-sm waves-effect btn-white">Read More</a>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>' 
+
+                    )
+                  }
+                  
+                })
+            })
+            </script>
             
             <!-- ============================================================== -->
             <!-- End Right content here -->
