@@ -204,37 +204,37 @@
                     <!--- Divider -->
                     <div id="sidebar-menu">
                         <ul>
-                            <li>
-                                <a href="javascript:void(0);"><i class=" ti-home"></i><span>Homepage</span><span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ url('/') }}">Welcome Page</a></li>
-                                    <li><a href="{{ url('/berita') }}">Berita GSM</a></li>
-                                    <li><a href="{{ url('/persebaran') }}">Persebaran GSM</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"><i class="ti-user"></i><span>Profil User</span><span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ url('/detailuser') }}">Detail User</a></li>
-                                    <li><a href="{{ url('/editprofile') }}">Edit Profil</a></li>
-                                </ul>
-                            </li>
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-agenda"></i> <span class="label label-primary pull-right">2</span><span> Materi Pelatihan </span></a>
-                                <ul class="list-unstyled">
-                                        <li><a href="{{ url('/materibasic') }}">Level Basic</a></li>
-                                        <li><a href="{{ url('/materiadvanced') }}">Level Advanced</a></li>
-                                    </ul>
-                            </li>
-                           
-                                <li class="has_sub">
-                                    <a href="javascript:void(0);" class="waves-effect"><i class=" ti-pencil-alt"></i><span class="label label-success pull-right">2</span><span>Linimasa Perubahan</span></span> </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href="{{ url('/uploadperubahan') }}">Uplaod Perubahan Anda</a></li>
-                                        <li><a href="{{ url('/perubahangurulain') }}">Lihat Perubahan Guru Lain</a></li>
-                                    </ul>
-                                </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class=" ti-home"></i><span>Homepage</span><span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ url('/elearning') }}">Welcome Page</a></li>
+                                <li><a href="{{ url('/berita') }}">Berita GSM</a></li>
+                                <li><a href="{{ url('/persebaran') }}">Persebaran GSM</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="ti-user"></i><span>Profil User</span><span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ url('/detailuser') }}">Detail User</a></li>
+                                <li><a href="{{ url('/editprofile') }}">Edit Profil</a></li>
+                            </ul>
+                        </li>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="ti-agenda"></i> <span class="label label-primary pull-right">2</span><span> Materi Pelatihan </span></a>
+                            <ul class="list-unstyled">
+                                    <li><a href="{{ url('/materibasic') }}">Level Basic</a></li>
+                                    <li><a href="{{ url('/materiadvanced') }}">Level Advanced</a></li>
+                                </ul>
+                        </li>
+                       
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class=" ti-pencil-alt"></i><span class="label label-success pull-right">2</span><span>Linimasa Perubahan</span></span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('/uploadperubahan') }}">Uplaod Perubahan Anda</a></li>
+                                    <li><a href="{{ url('/perubahangurulain') }}">Lihat Perubahan Guru Lain</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                         <div class="clearfix"></div>
                     </div>
                     <div class="clearfix"></div>

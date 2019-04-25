@@ -37,7 +37,7 @@
 
         <div class="form-group m-t-30 m-b-0">
             <div class="col-sm-12">
-                <a href="page-recoverpw.html" class="text-dark"><i class="fa fa-lock m-r-5"></i> Lupa Password ?</a>
+                <a href="{{ url('/resetpassword') }}" class="text-dark"><i class="fa fa-lock m-r-5"></i> Lupa Password ?</a>
             </div>
         </div>
     </form>

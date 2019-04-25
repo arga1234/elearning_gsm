@@ -28,6 +28,98 @@
             swal("Here's a message!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat, tincidunt vitae ipsum et, pellentesque maximus enim. Mauris eleifend ex semper, lobortis purus sed, pharetra felis")
         });
 
+        $('#update').click(function(){
+            var id = document.getElementById('id').value
+            var data = {
+                "name" : document.getElementById('nama').value, 
+                "attendedWorkshop" : document.getElementById('workshop').value, 
+                "detail" : {
+                    "birthplace" : document.getElementById('tempat_lahir').value,
+                    "birthdate" : document.getElementById("datepicker-autoclose").value,
+                    "gender" : document.getElementById('gender').value,
+                    "position" : document.getElementById('posisi').value,
+                    "lastEducation" : document.getElementById('pendidikan').value,
+                    "phone" : document.getElementById('no_wa').value
+                }
+            } 
+            var data_2 = JSON.stringify(data)
+            console.log(data_2)
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+            var token_user=getCookie("token_login_user_gsm")
+            console.log(token_user)
+        
+
+            $(document).ajaxStart(function() { Pace.restart(); });
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost/elearning/public/api/v1/user/'+id,
+                headers: {
+                    "Authorization" : "Bearer "+token_user,
+                    "Content-Type": "application/json",
+                    "Accept"      : "application/json"
+                },
+                data: data_2
+                })
+                .done(function(data, status){
+                    console.log(status)
+                    if(status){
+                        swal("Bagus", "Data sudah Anda diperbarui")
+                    }
+                })
+                .fail(function(data, status){
+                    console.log(status)
+                    if(status){
+                        swal("Terjadi Kesalahan", "Pastikan koneksi internet Anda berjalan dengan benar")
+                    }
+                })
+        })
+
+        $('#lupapassword').click(function(){
+            $(document).ajaxStart(function() { Pace.restart(); });
+            if(document.getElementById('email').value == ""){
+                swal("Isilah field email yang ada")
+            }else{
+            var datas = {
+                "email" : document.getElementById('email').value
+            }
+            var data_2 = JSON.stringify(datas)
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost/elearning/public/api/v1/password/create',
+                data: data_2
+                })
+                .done(function(data, status){
+                    // console.log(data)
+                    console.log(status)
+                    if(status){
+                        swal("Cek Email", "Kami sudah mengirimkan link ubah pssword ke email Anda")
+                    }
+                })
+                .fail(function(data, status){
+                    // console.log(data)
+                    console.log(status)
+                    if(status){
+                        swal("Terjadi Kesalahan", "Pastikan koneksi internet dan alamat email Anda benar")
+                    }
+                })
+            }
+            
+        })
+
         $('#login').click(function(){
             $(document).ajaxStart(function() { Pace.restart(); });
             // swal("Maaf", "Isilah semua data yang ada")
@@ -53,7 +145,7 @@
                     })
                     .done(function(data, status){
                      swal("Selamat", "Anda berhasil login")
-                     console.log(data.data._id)
+                     console.log(data)
                     
                      localStorage.setItem('data_user_elearning_gsm', JSON.stringify(data.data))
                      setCookie("token_login_user_gsm", data.token, 30)

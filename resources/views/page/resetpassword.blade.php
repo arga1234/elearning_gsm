@@ -16,8 +16,8 @@
 
 
     <div class="panel-body">
-    <form class="form-horizontal m-t-20" enctype="multipart/form-data" method="post" name="loginform">
-        
+    {{-- <form class="form-horizontal m-t-20" enctype="multipart/form-data" method="post" name="loginform"> --}}
+     <form class="form-horizontal m-t-20"  enctype="multipart/form-data" method="post" name="resetpassword">
         <div class="form-group ">
             <div class="col-xs-12">
                 <input class="form-control" type="text" required="" id="email" name="email" placeholder="Email" value="">
@@ -26,7 +26,7 @@
 
         <div class="form-group text-center m-t-40">
             <div class="col-xs-12" style="margin-top:-20px">
-                <button class="btn btn-info btn-block text-uppercase waves-effect waves-light" type="submit" id="ubahpassword">Ubah Password</button>
+                <button class="btn btn-info btn-block text-uppercase waves-effect waves-light" type="button" id="lupapassword">kirim</button>
             </div>
         </div>
 
@@ -52,27 +52,27 @@
 </script>
 
 <script>
-    var form = document.forms.namedItem("loginform")
-    console.log(form)
-    form.addEventListener('submit', function(ev) {
+    // var form = document.forms.namedItem("loginform")
+    // console.log(form)
+    // form.addEventListener('submit', function(ev) {
 
-    oData = new FormData(form);
-    oData.append("CustomField", "This is some extra data");
-    console.log(oData)
-    var oReq = new XMLHttpRequest();
-    oReq.open("POST", "http://localhost/elearning/public/api/v1/password/create", true);
-    oReq.onload = function(oEvent) {
-        if (oReq.status == 200) {
-            console.log("sukses")
-            // window.location="daftar"
-        } else {
-        console.log("Maaf Gagal")
-        }
-    };
+    // oData = new FormData(form);
+    // oData.append("CustomField", "This is some extra data");
+    // console.log(oData)
+    // var oReq = new XMLHttpRequest();
+    // oReq.open("POST", "http://localhost/elearning/public/api/v1/password/create", true);
+    // oReq.onload = function(oEvent) {
+    //     if (oReq.status == 200) {
+    //         console.log("sukses")
+    //         // window.location="daftar"
+    //     } else {
+    //     console.log("Maaf Gagal")
+    //     }
+    // };
 
-    oReq.send(oData);
-    ev.preventDefault();
-    }, false);
+    // oReq.send(oData);
+    // ev.preventDefault();
+    // }, false);
 </script>
 
 {{-- Sweet Alerts --}}

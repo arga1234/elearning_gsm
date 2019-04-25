@@ -38,7 +38,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 
-        <script src="assets/js/modernizr.min.js"></script>
+        <script src="{{asset('assets/js/modernizr.min.js')}}"></script>
         <style>
             /* Set the size of the div element that contains the map */
            #map {
@@ -239,13 +239,13 @@
                                 </ul>
                         </li>
                        
-                            <li class="has_sub">
+                            {{-- <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class=" ti-pencil-alt"></i><span class="label label-success pull-right">2</span><span>Linimasa Perubahan</span></span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('/uploadperubahan') }}">Uplaod Perubahan Anda</a></li>
                                     <li><a href="{{ url('/perubahangurulain') }}">Lihat Perubahan Guru Lain</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -271,7 +271,7 @@
         </script>
 
         <!-- jQuery  -->
-        <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+        {{-- <script src="{{asset('assets/js/jquery.min.js')}}"></script> --}}
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/detect.js')}}"></script>
         <script src="{{asset('assets/js/fastclick.js')}}"></script>
@@ -285,7 +285,7 @@
         <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
         <script src="{{asset('assets/plugins/morris/morris.min.js')}}"></script>
         <script src="{{asset('assets/plugins/raphael/raphael-min.js')}}"></script>
-         <script src="{{asset('assets/plugins/bootstrap-sweetalert/sweet-alert.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap-sweetalert/sweet-alert.min.js')}}"></script>
 
         <!-- Todojs  -->
         <script src="{{asset('assets/pages/jquery.todo.js')}}"></script>

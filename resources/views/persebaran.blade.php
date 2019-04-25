@@ -52,7 +52,7 @@
                                                     <select class="selectpicker" data-live-search="true"  data-style="btn-white">
                                                             <option selected disabled>Please Select</option>
                                                             <option>Sekolah Model GSM</option>
-                                                            <option>User/Sekolah yang terdaftar di Elearning</option> 
+                                                            <option>Sekolah Terdaftar Pengikut GSM</option> 
                                                         </select>
                                                 </div>
                                                 <div style="margin-bottom:20px" class="col-md-4">

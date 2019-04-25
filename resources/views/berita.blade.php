@@ -56,7 +56,6 @@
             </div>
             <script>
             $(document).ready(function(){
-                console.log("hello")
                 $.get("https://www.sekolahmenyenangkan.org/wp-json/wp/v2/posts", function(data, status){
                   var jumlah_berita = data.length -1
                   var bulan_string = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
@@ -65,9 +64,9 @@
                     var tanggal = data_tanggal.getDate()
                     var bulan = data_tanggal.getMonth()
                     var title= data[i].title.rendered
-                    var title_limit = title.substr(0, 33)
+                    var title_limit = title.substr(0, 100)
                     $('#blog_gsm').append(
-                    '<div class="col-md-4">'+
+                    '<div class="col-md-12">'+
                     '<div class="blog-box-one">'+
                         '<div class="cover-wrapper">'+
                             '<a href="'+data[i].link+'" target="_blank"><img alt="Blog-img" src="'+data[i].jetpack_featured_media_url+'" class="img-responsive"/></a>'+
@@ -80,7 +79,7 @@
     
                             '<div class="meta-container">'+
                                 '<a href="'+data[i].link+'" target="_blank">'+
-                                    '<h5 class="text-overflow m-t-0" style="">'+title_limit+'..</h5>'+
+                                    '<h5 class="text-overflow m-t-0" style="">'+title_limit+' ...</h5>'+
                                 '</a>'+
                                 '<div class="font-13">'+
                                     '<span class="meta">Posted by : <a href="#"><b>Admin GSM</b></a></span>'+

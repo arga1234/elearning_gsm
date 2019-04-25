@@ -113,6 +113,12 @@
                                     <div class="col-lg-12">
                                         <div class="card-box">
                                             <h4 class="text-dark header-title m-t-0">Peta Persebaran Sekolah Model GSM & Terdaftar</h4>
+                                            <img src="{{asset('assets/images/flag_yellow.png')}}" alt=""> <span> : Sekolah Model GSM</span>
+                                            <br>
+                                            <br>
+                                            <img src="{{asset('assets/images/flag.png')}}" style="width:25px" alt=""> <span> : Sekolah Pengikut Model GSM</span>
+                                            <br>
+                                            <br>
                                             <div class="row">
                                                 <div id="map"></div>
                                             </div>                        			
@@ -175,6 +181,8 @@
             </div>
             <script>
                 $(document).ready(function(){
+                    var data_user_elearning_gsm = JSON.parse(localStorage.getItem('data_user_elearning_gsm'))
+                    console.log(data_user_elearning_gsm)
                     $.ajax({
                     type: 'GET',
                     url :"http://localhost/elearning/public/api/v1/elearning/analytic"
@@ -209,27 +217,73 @@
 
            }).done(function(datas, status){
                console.log(datas)
-               var school = []
-               for(i=0;i<datas.length;i++){
-               school += '["'
-               school += datas[i].sekolah
-               school += '",'
-               school += datas[i].lokasi[1]
-               school += ','
-               school += datas[i].lokasi[0]
-               school += ']'
-               if (i==datas.length-1) {
-                   school +=''
+
+               var school_pengikut_gsm = []
+               for(i=0;i<datas.SekolahTerdaftar.length;i++){
+                school_pengikut_gsm += '["'
+                school_pengikut_gsm += datas.SekolahTerdaftar[i].sekolah
+                school_pengikut_gsm += '",'
+                school_pengikut_gsm += datas.SekolahTerdaftar[i].lokasi[1]
+                school_pengikut_gsm += ','
+                school_pengikut_gsm += datas.SekolahTerdaftar[i].lokasi[0]
+                school_pengikut_gsm += ']'
+               if (i==datas.SekolahTerdaftar.length-1) {
+                school_pengikut_gsm +=''
                }else {
-                   school +=','
+                school_pengikut_gsm +=','
                }
                }
                
-               var obj2 = JSON.parse("["+school+"]");
-               console.log(obj2)
-               var schools = obj2
+               var obj_1 = JSON.parse("["+school_pengikut_gsm+"]");
+               console.log(obj_1)
+               var schools_pengikut_gsm = obj_1
                var image = {
-                   url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                   url: '{{asset('assets/images/flag.png')}}',
+                   // This marker is 20 pixels wide by 32 pixels high.
+                   size: new google.maps.Size(20, 32),
+                   // The origin for this image is (0, 0).
+                   origin: new google.maps.Point(0, 0),
+                   // The anchor for this image is the base of the flagpole at (0, 32).
+                   anchor: new google.maps.Point(0, 32)
+               };
+               var shape = {
+                   coords: [1, 1, 1, 20, 18, 20, 18, 1],
+                   type: 'poly'
+               }
+               for (var i = 0; i < schools_pengikut_gsm.length; i++) {
+                   var school = schools_pengikut_gsm[i];
+                   var marker = new google.maps.Marker({
+                   position: {lat: school[1], lng: school[2]},
+                   map: map,
+                   icon: image,
+                   shape: shape,
+                   title: school[0],
+                   zIndex: school[3]
+                   })
+               }
+
+
+               var school_gsm = []
+               for(i=0;i<datas.SekolahModelGsm.length;i++){
+                school_gsm += '["'
+                school_gsm += datas.SekolahModelGsm[i].sekolah
+                school_gsm += '",'
+                school_gsm += datas.SekolahModelGsm[i].lokasi[1]
+                school_gsm += ','
+                school_gsm += datas.SekolahModelGsm[i].lokasi[0]
+                school_gsm += ']'
+               if (i==datas.SekolahModelGsm.length-1) {
+                school_gsm +=''
+               }else {
+                school_gsm +=','
+               }
+               }
+               
+               var obj2 = JSON.parse("["+school_gsm+"]");
+               console.log(obj2)
+               var schools_gsm = obj2
+               var image = {
+                   url: '{{asset('assets/images/flag_yellow.png')}}',
                    // This marker is 20 pixels wide by 32 pixels high.
                    size: new google.maps.Size(20, 32),
                    // The origin for this image is (0, 0).
@@ -241,8 +295,8 @@
                    coords: [1, 1, 1, 20, 18, 20, 18, 1],
                    type: 'poly'
                };
-               for (var i = 0; i < schools.length; i++) {
-                   var school = schools[i];
+               for (var i = 0; i < schools_gsm.length; i++) {
+                   var school = schools_gsm[i];
                    var marker = new google.maps.Marker({
                    position: {lat: school[1], lng: school[2]},
                    map: map,
@@ -262,10 +316,7 @@
    <script async defer
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS6ZdI6zn_QX7ceEWJtdFzdCMuHQijNmc&callback=initMap">
    </script>
-            
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
-
-
         @endsection

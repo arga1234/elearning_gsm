@@ -34,35 +34,47 @@
                                                     <img src="assets/images/avatar-2.jpg" alt="image" class="img-responsive img-rounded" width="200"/>
                                              </div>
                                              <div class="col-md-4">
-                                                <h5><b>This is Text :</b></h5>
-                                                <p class="text-muted m-b-15 font-13">
+                                                <h5><b>Nama :</b></h5>
+                                                <p class="text-muted m-b-15 font-13" id="name">
                                                     This is Example Text
                                                 </p>
 
-                                                <h5><b>This is Text :</b></h5>
-                                                <p class="text-muted m-b-15 font-13">
+                                                <h5><b>Tempat Lahir :</b></h5>
+                                                <p class="text-muted m-b-15 font-13" id="birthplace">
                                                     This is Example Text
                                                 </p>
-                                                <h5><b>This is Text :</b></h5>
-                                                <p class="text-muted m-b-15 font-13">
+                                                <h5><b>Tanggal Lahir :</b></h5>
+                                                <p class="text-muted m-b-15 font-13" id="birthdate">
+                                                    This is Example Text
+                                                </p>
+                                                <h5><b>Nomor WA :</b></h5>
+                                                <p class="text-muted m-b-15 font-13" id="phone">
                                                     This is Example Text
                                                 </p>
                                              </div>
                                              <div class="col-md-4">
-                                                <h5><b>This is Text :</b></h5>
-                                                <p class="text-muted m-b-15 font-13">
+                                                <h5><b>Sudah Ikut Workshop :</b></h5>
+                                                <p class="text-muted m-b-15 font-13" id="attendedWorkshop">
                                                     This is Example Text
                                                 </p>
-                                                <h5><b>This is Text :</b></h5>
-                                                <p class="text-muted m-b-15 font-13">
+                                                <h5><b>Gender :</b></h5>
+                                                <p class="text-muted m-b-15 font-13" id="gender">
                                                     This is Example Text
                                                 </p>
-                                                <h5><b>This is Text :</b></h5>
-                                                <p class="text-muted m-b-15 font-13">
+                                                <h5><b>Posisi di Sekolah :</b></h5>
+                                                <p class="text-muted m-b-15 font-13" id="position">
                                                     This is Example Text
                                                 </p>
+                                                <h5><b>Pendidikan Terakhir :</b></h5>
+                                                <p class="text-muted m-b-15 font-13" id="lastEducation">
+                                                    This is Example Text
+                                                </p>
+                                                <input type="text" id="id" style="display:none">
+                                                
                                            </div>
-                                           <button style="float:right" type="button" class="btn btn-default waves-effect waves-light">Edit</button>
+                                        <a href="{{ url('/editprofile') }}">
+                                            <button style="float:right" type="button" class="btn btn-default waves-effect waves-light">Edit</button>
+                                           </a>
 
                                             </div>
                                         </div>
@@ -142,11 +154,7 @@
                                     </div><!-- end blog -->
                                             </div>
                                         </div>
-                                    </div>
-
-                                    
-
-                            
+                                    </div> 
                                 </div>
                               
     
@@ -160,7 +168,62 @@
 
             </div>
             
-            
+            <script>
+             $(document).ready(function(){
+                var data_diri = JSON.parse(localStorage.getItem("data_user_elearning_gsm"))
+                document.getElementById('id').value= data_diri._id
+                var id = data_diri._id
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+            var token_user=getCookie("token_login_user_gsm")
+            // console.log(token_user)
+            $(document).ajaxStart(function() { Pace.restart(); });
+                   $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost/elearning/public/api/v1/user/'+id,
+                    headers: {
+                        "Authorization" : "Bearer "+token_user
+                    }
+                   })
+                   .done(function(data, status){
+                       console.log(status)
+                       console.log(data)
+                    localStorage.setItem('data_user_profile', JSON.stringify(data))
+                    var data_user_profile = JSON.parse(localStorage.getItem("data_user_profile"))
+                    document.getElementById('name').innerHTML = data_user_profile.user.name
+                    document.getElementById('birthplace').innerHTML = data_user_profile.user.detail.birthplace
+                    document.getElementById('birthdate').innerHTML = data_user_profile.user.detail.birthdate
+                    document.getElementById('position').innerHTML = data_user_profile.user.detail.position
+                    document.getElementById('phone').innerHTML = data_user_profile.user.detail.phone
+                    if(data_user_profile.user.detail.attendedWorkshop){
+                        var attendedWorkshop = "Sudah Pernah"
+                    }else{
+                        var attendedWorkshop = "Belum Pernah"
+                    }
+                    document.getElementById('attendedWorkshop').innerHTML = attendedWorkshop
+                    document.getElementById('lastEducation').innerHTML = data_user_profile.user.detail.lastEducation
+                    document.getElementById('gender').innerHTML = data_user_profile.user.detail.gender
+                })
+                   .fail(function(data, status){
+                    console.log(status)
+                    swal("Terjadi Kesalahan", "Cek koneksi internet Anda dan ulangi");
+
+                }) 
+                })
+            </script>
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->

@@ -9,9 +9,15 @@
         {{-- <link rel="shortcut icon" href="{{asset('assets/images/gsm_logo.png')}}"> --}}
 
         <title>E-Learning GSM</title>
+        <link href="https://fonts.googleapis.com/css?family=Passion+One|Patua+One" rel="stylesheet"> 
+        <!--Morris Chart CSS -->
+		<link rel="stylesheet" href="{{asset('assets/plugins/morris/morris.css')}}">
+        <link href="{{asset('assets/plugins/bootstrap-sweetalert/sweet-alert.css')}}" rel="stylesheet" type="text/css">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
+        {{-- Sweet Alert --}}
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        {{-- Select --}}
         <link href="{{asset('assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css')}}" rel="stylesheet" />
         <link href="{{asset('assets/plugins/switchery/css/switchery.min.css')}}" rel="stylesheet" />
         <link href="{{asset('assets/plugins/multiselect/css/multi-select.css')}}"  rel="stylesheet" type="text/css" />
@@ -19,27 +25,25 @@
         <link href="{{asset('assets/plugins/bootstrap-select/css/bootstrap-select.min.css')}}" rel="stylesheet" />
         <link href="{{asset('assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 
-
         <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/core.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/components.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/pages.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet" type="text/css" />
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
         <script src="{{asset('assets/js/modernizr.min.js')}}"></script>
-        
+        <style>
+            /* Set the size of the div element that contains the map */
+           #map {
+             height: 400px;  /* The height is 400 pixels */
+             width: 100%;  /* The width is the width of the web page */
+            }
+         </style>
+     
     </head>
 
 
@@ -204,43 +208,42 @@
 
             <!-- ========== Left Sidebar Start ========== -->
 
-
             <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
                     <!--- Divider -->
                     <div id="sidebar-menu">
                         <ul>
-                            <li>
-                                <a href="javascript:void(0);"><i class=" ti-home"></i><span>Homepage</span><span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ url('/') }}">Welcome Page</a></li>
-                                    <li><a href="{{ url('/berita') }}">Berita GSM</a></li>
-                                    <li><a href="{{ url('/persebaran') }}">Persebaran GSM</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);"><i class="ti-user"></i><span>Profil User</span><span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ url('/detailuser') }}">Detail User</a></li>
-                                    <li><a href="{{ url('/editprofile') }}">Edit Profil</a></li>
-                                </ul>
-                            </li>
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="ti-agenda"></i> <span class="label label-primary pull-right">2</span><span> Materi Pelatihan </span></a>
-                                <ul class="list-unstyled">
-                                        <li><a href="{{ url('/materibasic') }}">Level Basic</a></li>
-                                        <li><a href="{{ url('/materiadvanced') }}">Level Advanced</a></li>
-                                    </ul>
-                            </li>
-                           
-                                <li class="has_sub">
-                                    <a href="javascript:void(0);" class="waves-effect"><i class=" ti-pencil-alt"></i><span class="label label-success pull-right">2</span><span>Linimasa Perubahan</span></span> </a>
-                                    <ul class="list-unstyled">
-                                        <li><a href="{{ url('/uploadperubahan') }}">Uplaod Perubahan Anda</a></li>
-                                        <li><a href="{{ url('/perubahangurulain') }}">Lihat Perubahan Guru Lain</a></li>
-                                    </ul>
-                                </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class=" ti-home"></i><span>Homepage</span><span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ url('/elearning') }}">Welcome Page</a></li>
+                                <li><a href="{{ url('/berita') }}">Berita GSM</a></li>
+                                <li><a href="{{ url('/persebaran') }}">Persebaran GSM</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="ti-user"></i><span>Profil User</span><span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ url('/detailuser') }}">Detail User</a></li>
+                                <li><a href="{{ url('/editprofile') }}">Edit Profil</a></li>
+                            </ul>
+                        </li>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="ti-agenda"></i> <span class="label label-primary pull-right">2</span><span> Materi Pelatihan </span></a>
+                            <ul class="list-unstyled">
+                                    <li><a href="{{ url('/materibasic') }}">Level Basic</a></li>
+                                    <li><a href="{{ url('/materiadvanced') }}">Level Advanced</a></li>
+                                </ul>
+                        </li>
+                       
+                            {{-- <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class=" ti-pencil-alt"></i><span class="label label-success pull-right">2</span><span>Linimasa Perubahan</span></span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('/uploadperubahan') }}">Uplaod Perubahan Anda</a></li>
+                                    <li><a href="{{ url('/perubahangurulain') }}">Lihat Perubahan Guru Lain</a></li>
+                                </ul>
+                            </li> --}}
+                        </ul>
                         <div class="clearfix"></div>
                     </div>
                     <div class="clearfix"></div>
@@ -263,9 +266,9 @@
         <script>
             var resizefunc = [];
         </script>
-
+		
         <!-- jQuery  -->
-        <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+        {{-- <script src="{{asset('assets/js/jquery.min.js')}}"></script> --}}
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/detect.js')}}"></script>
         <script src="{{asset('assets/js/fastclick.js')}}"></script>
@@ -275,7 +278,13 @@
         <script src="{{asset('assets/js/wow.min.js')}}"></script>
         <script src="{{asset('assets/js/jquery.nicescroll.js')}}"></script>
         <script src="{{asset('assets/js/jquery.scrollTo.min.js')}}"></script>
-        
+        <!-- jQuery  -->
+        <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
+        <script src="{{asset('assets/plugins/morris/morris.min.js')}}"></script>
+        <script src="{{asset('assets/plugins/raphael/raphael-min.js')}}"></script>
+        <script src="{{asset('assets/plugins/bootstrap-sweetalert/sweet-alert.min.js')}}"></script>
+
+        {{-- Select and form select  --}}
         <script src="{{asset('assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js')}}"></script>
         <script src="{{asset('assets/plugins/switchery/js/switchery.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/plugins/multiselect/js/jquery.multi-select.js')}}"></script>
@@ -286,44 +295,51 @@
         <script src="{{asset('assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}" type="text/javascript"></script>
 
-        <script type="text/javascript" src="{{asset('assets/plugins/autocomplete/jquery.mockjax.js')}}"></script>
+        <!-- Todojs  -->
+        <script src="{{asset('assets/pages/jquery.todo.js')}}"></script>
+
+        <!-- chatjs  -->
+        <script src="{{asset('assets/pages/jquery.chat.js')}}"></script>
+        <script src="{{asset('assets/js/jquery.core.js')}}"></script>
+        <script src="{{asset('assets/js/jquery.app.js')}}"></script>
+        <script src="{{asset('assets/plugins/peity/jquery.peity.min.js')}}"></script>		
+        <script src="{{asset('assets/pages/jquery.dashboard_2.js')}}"></script>
+        
         <script type="text/javascript" src="{{asset('assets/plugins/autocomplete/jquery.autocomplete.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/plugins/autocomplete/countries.js')}}"></script>
-        <script type="text/javascript" src="{{asset('assets/pages/autocomplete.js')}}"></script>
-
+        {{-- <script type="text/javascript" src="{{asset('assets/pages/autocomplete.js')}}"></script> --}}
         <script type="text/javascript" src="{{asset('assets/pages/jquery.form-advanced.init.js')}}"></script>
-
-        
-		<script src="{{asset('assets/js/jquery.core.js')}}"></script>
-        <script src="{{asset('assets/js/jquery.app.js')}}"></script>
 
         <!--form validation init-->
         <script src="{{asset('assets/plugins/tinymce/tinymce.min.js')}}"></script>       
-        <script type="text/javascript">
-        	$(document).ready(function () {
-			    if($("#elm1").length > 0){
-			        tinymce.init({
-			            selector: "textarea#elm1",
-			            theme: "modern",
-			            height:300,
-			            plugins: [
-			                "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-			                "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-			                "save table contextmenu directionality emoticons template paste textcolor"
-			            ],
-			            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons", 
-			            style_formats: [
-			                {title: 'Bold text', inline: 'b'},
-			                {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-			                {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-			                {title: 'Example 1', inline: 'span', classes: 'example1'},
-			                {title: 'Example 2', inline: 'span', classes: 'example2'},
-			                {title: 'Table styles'},
-			                {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-			            ]
-			        });    
-			    }  
-			});
-        </script>
+        <link rel="stylesheet" href="{{asset('assets/plugins/pace_master/themes/blue/pace-theme-minimal.css')}}">
+        <script src="{{asset('assets/plugins/pace_master/pace.js')}}" type="text/javascript"></script>
+
+        {{-- Pace --}}
+
+        <script>
+      jQuery(document).ready(function($) {
+        function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+        }
+        var token_user=getCookie("token_login_user_gsm")
+        // console.log(token_user)
+        if(token_user==""){
+            window.location="login"
+        }
+            });
+    </script>
     </body>
 </html>
