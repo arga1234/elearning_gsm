@@ -11,7 +11,7 @@
         <title>E-Learning GSM</title>
         <link href="https://fonts.googleapis.com/css?family=Passion+One|Patua+One" rel="stylesheet"> 
         <!--Morris Chart CSS -->
-		<link rel="stylesheet" href="{{asset('assets/plugins/morris/morris.css')}}">
+		{{-- <link rel="stylesheet" href="{{asset('assets/plugins/morris/morris.css')}}"> --}}
         <link href="{{asset('assets/plugins/bootstrap-sweetalert/sweet-alert.css')}}" rel="stylesheet" type="text/css">
 
         {{-- Sweet Alert --}}
@@ -280,7 +280,7 @@
         <script src="{{asset('assets/js/jquery.scrollTo.min.js')}}"></script>
         <!-- jQuery  -->
         <script src="{{asset('assets/plugins/moment/moment.js')}}"></script>
-        <script src="{{asset('assets/plugins/morris/morris.min.js')}}"></script>
+        {{-- <script src="{{asset('assets/plugins/morris/morris.min.js')}}"></script> --}}
         <script src="{{asset('assets/plugins/raphael/raphael-min.js')}}"></script>
         <script src="{{asset('assets/plugins/bootstrap-sweetalert/sweet-alert.min.js')}}"></script>
 

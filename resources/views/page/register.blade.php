@@ -56,7 +56,18 @@
                         
                         <div style="margin-top:-60px"  class="col-lg-6">
                             <div class="p-20">
-                                <form class="form-horizontal m-t-20" action="index.html">                                    
+                                <form class="form-horizontal m-t-20" action="index.html"> 
+                                        <!-- <div class="form-group">
+                                                <div class="col-xs-12">
+                                                        <p>Apakah Anda seorang guru ?</p>
+                                                        <select name="status_guru[]" id="status_guru" data-live-search="true" data-style="btn-white" class="selectpicker">
+                                                            <option value="" selected disabled>Please select</option>
+                                                            <option value="" selected disabled>Iya</option>
+                                                            <option value="" selected disabled>Tidak</option>
+                                                        </select>
+                                                </div>
+                                            </div> -->
+
                                     <div class="form-group">
                                         <div class="col-xs-12">
                                                 <p>Kabupaten/Kota Sekolah Anda</p>

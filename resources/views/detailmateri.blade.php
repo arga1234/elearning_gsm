@@ -118,8 +118,8 @@
             $(document).ready(function(){
                 var id_modul = localStorage.getItem("id_materi")    
                 document.getElementById('id_modul').value = id_modul
-                var id_user = JSON.parse(localStorage.getItem('data_user_profile'))
-                document.getElementById('id_user').value = id_user.user._id
+                var id_user = JSON.parse(localStorage.getItem('data_user_elearning_gsm'))
+                document.getElementById('id_user').value = id_user._id
                 
                 $(document).ajaxStart(function() { Pace.restart(); });
                 $.ajax({

@@ -52,6 +52,7 @@
                                                     
                                                     </div>                                                
                                             </div>
+                                            {{-- <button class="button"onclick="testing()">Press Me</button> --}}
                                         </div>
                                     
                     </div> <!-- container -->
@@ -61,6 +62,24 @@
                 </footer>
             </div>
             <script>
+                function testing(){
+                    var token_user = localStorage.getItem("token")
+                                 $.ajax({
+                                    type : 'GET', 
+                                    url : "http://207.148.68.185/api/v1/users/quiz", 
+                                    headers: {
+                                        "Authorization" : "Bearer "+token_user,
+                                        "Content-Type": "application/json",
+                                        "Accept"      : "application/json"
+                                    }
+                                }).done(function(data, status){
+                                    console.log("Ini dia")
+                                    console.log(data)
+                                    localStorage.setItem('data_user_elearning_gsm', JSON.stringify(data.data))
+                                })
+                    
+                }
+
                 function pilih_kategori(){
                     $('#list_materi')
                     .find('div')
@@ -91,8 +110,14 @@
                                             '<div class="table-box">'+
                                                 '<div class="table-detail">'+
                                                     '<div class="col-md-12">'+
-                                                        '<p style="font-size:25px"> <b>'+title+'</b> </p>'+
-                                                        '<p style="color:#5d9cec">Category : '+category_materi+'</p>'+
+                                                        '<div class="row">'+
+                                                        '<div class="col-md-6">'+
+                                                            '<p style="font-size:25px"> <b>'+title+'</b> </p>'+
+                                                        '</div>'+
+                                                        '<div class="col-md-6">'+
+                                                            '<p style="text-align:right;color:#bff88b" id="'+data[i]._id+'">Tes</p>'+
+                                                        '</div>'+
+                                                    '</div>'+                                                        '<p style="color:#5d9cec">Category : '+category_materi+'</p>'+
                                                         '<p>'+data[i].description+'</p>'+
                                                     '</div>'+
                                                     '<div class="col-md-12">'+
@@ -104,6 +129,16 @@
                                     '</div>'
                                     )
                                 }
+
+                                var data_id_enrolled = JSON.parse(localStorage.getItem("module_enrolled"))
+                                var data_user = JSON.parse(localStorage.getItem("data_user_elearning_gsm"))
+                               
+                                for(var i = 0; i<jumlah_materi;i++){
+                                    var arraycontainsturtles = (data_id_enrolled.indexOf(data[i]._id) > -1);
+                                    if(arraycontainsturtles){
+                                        document.getElementById(data[i]._id).innerHTML = "Sudah Mengambil Modul"
+                                    }
+                                }
                                 
                             }).fail(function(data,status){
                                 swal("Terjadi Kesalahan", "Cek koneksi internet Anda dan ulangi");
@@ -111,6 +146,61 @@
                             })
                 }
                     $(document).ready(function(){
+                        function getCookie(cname) {
+                        var name = cname + "=";
+                        var decodedCookie = decodeURIComponent(document.cookie);
+                        var ca = decodedCookie.split(';');
+                        for(var i = 0; i < ca.length; i++) {
+                            var c = ca[i];
+                            while (c.charAt(0) == ' ') {
+                            c = c.substring(1);
+                            }
+                            if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                            }
+                        }
+                        return "";
+                    }
+                    var token_user=getCookie("token_login_user_gsm")
+                    localStorage.setItem("token", token_user)
+                        // $.ajax({
+                        //             type : 'GET', 
+                        //             url : "http://207.148.68.185/api/v1/users/quiz", 
+                        //             headers: {
+                        //                 "Authorization" : "Bearer "+token_user,
+                        //                 "Content-Type": "application/json",
+                        //                 "Accept"      : "application/json"
+                        //             }
+                        //         }).done(function(data, status){
+                        //             console.log("Ini dia")
+                        //             console.log(data)
+                        //             localStorage.setItem('data_user_elearning_gsm', JSON.stringify(data.data))
+                        //             var data_user = JSON.parse(localStorage.getItem("data_user_elearning_gsm"))
+                        // console.log(data_user)
+                        // var banyak_quiz = data_user.quiz.length
+                        // console.log(banyak_quiz)
+                        // var data_id_module = ''
+                        // for(var i = 0; i<banyak_quiz ; i++){
+                        //     if(data_user.quiz[i].flag == "enrolled"){
+                        //     data_id_module += '"'
+                        //     data_id_module += data_user.quiz[i].modul_id
+                        //     data_id_module += '"'
+                        //     if(i==banyak_quiz-1){
+                        //         data_id_module += ''
+                        //     }else{
+                        //         data_id_module += ','
+                        //     }
+                        //     }
+                        // }
+                        // console.log(data_id_module)
+                        // var data_id_module2 = data_id_module.replace(/^[,\s]+|[,\s]+$/g, '').replace(/,[,\s]*,/g, ',');
+                        // var data_id_module3 = '['+data_id_module2+']'
+                        // var data_id_module4 = JSON.parse(data_id_module3)
+                        // console.log(data_id_module4)
+                        // localStorage.setItem("module_enrolled", JSON.stringify(data_id_module4))
+                        // })
+                                
+
                         $(document).ajaxStart(function() { Pace.restart(); });
                         $.ajax({
                             type: 'GET',
@@ -140,8 +230,14 @@
                                             '<div class="table-box">'+
                                                 '<div class="table-detail">'+
                                                     '<div class="col-md-12">'+
-                                                        '<p style="font-size:25px"> <b>'+title+'</b> </p>'+
-                                                        '<p style="color:#5d9cec">Category : '+category_materi+'</p>'+
+                                                        '<div class="row">'+
+                                                        '<div class="col-md-6">'+
+                                                            '<p style="font-size:25px"> <b>'+title+'</b> </p>'+
+                                                        '</div>'+
+                                                        '<div class="col-md-6">'+
+                                                            '<p style="text-align:right;color:#bff88b" id="'+data[i]._id+'">Tes</p>'+
+                                                        '</div>'+
+                                                    '</div>'+                                                          '<p style="color:#5d9cec">Category : '+category_materi+'</p>'+
                                                         '<p>'+data[i].description+'</p>'+
                                                     '</div>'+
                                                     '<div class="col-md-12">'+
@@ -153,7 +249,15 @@
                                     '</div>'
                                     )
                                 }
-                                
+                                var data_id_enrolled = JSON.parse(localStorage.getItem("module_enrolled"))
+                                var data_user = JSON.parse(localStorage.getItem("data_user_elearning_gsm"))
+                               
+                                for(var i = 0; i<jumlah_materi;i++){
+                                    var arraycontainsturtles = (data_id_enrolled.indexOf(data[i]._id) > -1);
+                                    if(arraycontainsturtles){
+                                        document.getElementById(data[i]._id).innerHTML = "Sudah Mengambil Modul"
+                                    }
+                                }
                             }).fail(function(data,status){
                                 swal("Terjadi Kesalahan", "Cek koneksi internet Anda dan ulangi");
                                 console.log(status)
@@ -197,8 +301,21 @@
                             }).done(function(data, status){
                                 console.log(data)
                                 swal("Membuka Materi");
-                                window.location="detailmateri"
+                                // window.location="detailmateri"
                                 localStorage.setItem('id_materi', id_modul)
+                                // $.ajax({
+                                //     type : 'GET', 
+                                //     url : "http://207.148.68.185/api/v1/users/quiz", 
+                                //     headers: {
+                                //         "Authorization" : "Bearer "+token_user,
+                                //         "Content-Type": "application/json",
+                                //         "Accept"      : "application/json"
+                                //     }
+                                // }).done(function(data, status){
+                                //     console.log("Ini dia")
+                                //     console.log(data)
+                                //     localStorage.setItem('data_user_elearning_gsm', JSON.stringify(data.data))
+                                // })
                             }).fail(function(data, status){
                                 swal("Terjadi Kesalahan", "Cek koneksi internet Anda dan ulangi");
                             })
