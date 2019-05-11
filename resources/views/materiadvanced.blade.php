@@ -146,6 +146,30 @@
                             })
                 }
                     $(document).ready(function(){
+                        var data_user = JSON.parse(localStorage.getItem("data_user_elearning_gsm"))
+                        console.log(data_user)
+                        var banyak_quiz = data_user.quiz.length
+                        console.log(banyak_quiz)
+                        var data_id_module = ''
+                        for(var i = 0; i<banyak_quiz ; i++){
+                            if(data_user.quiz[i].flag == "enrolled"){
+                            data_id_module += '"'
+                            data_id_module += data_user.quiz[i].modul_id
+                            data_id_module += '"'
+                            if(i==banyak_quiz-1){
+                                data_id_module += ''
+                            }else{
+                                data_id_module += ','
+                            }
+                            }
+                        }
+                        console.log(data_id_module)
+                        var data_id_module2 = data_id_module.replace(/^[,\s]+|[,\s]+$/g, '').replace(/,[,\s]*,/g, ',');
+                        var data_id_module3 = '['+data_id_module2+']'
+                        var data_id_module4 = JSON.parse(data_id_module3)
+                        console.log(data_id_module4)
+                        localStorage.setItem("module_enrolled", JSON.stringify(data_id_module4))
+                        
                         function getCookie(cname) {
                         var name = cname + "=";
                         var decodedCookie = decodeURIComponent(document.cookie);
