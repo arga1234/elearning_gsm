@@ -121,7 +121,7 @@
         })
 
         $('#login').click(function(){
-            $(document).ajaxStart(function() { Pace.restart(); });
+         
             // swal("Maaf", "Isilah semua data yang ada")
             if(document.getElementById('email').value == "" ||
             document.getElementById('password').value == ""
@@ -133,8 +133,9 @@
                     email : document.getElementById('email').value,
                     password : document.getElementById('password').value,
                 }
-
+                $(document).ajaxStart(function(){ Pace.restart() });
                 $.ajax({
+                    
                     type: 'POST',
                     url: 'http://localhost/elearning/public/api/v1/login',
                     headers: {
@@ -148,7 +149,7 @@
                      console.log(data)
                     
                      localStorage.setItem('data_user_elearning_gsm', JSON.stringify(data.data))
-                     setCookie("token_login_user_gsm", data.token, 30)
+                     setCookie("token_login_user_gsm", data.token, 1)
                      function setCookie(cname,cvalue,exdays) {
                      var d = new Date();
                      d.setTime(d.getTime() + (exdays*24*60*60*1000));

@@ -93,6 +93,27 @@
         <script src="{{asset('assets/plugins/tinymce/tinymce.min.js')}}"></script>       
         <script type="text/javascript">
         	$(document).ready(function () {
+                // function getCookie(cname) {
+                // var name = cname + "=";
+                // var decodedCookie = decodeURIComponent(document.cookie);
+                // var ca = decodedCookie.split(';');
+                // for(var i = 0; i < ca.length; i++) {
+                //     var c = ca[i];
+                //     while (c.charAt(0) == ' ') {
+                //     c = c.substring(1);
+                //     }
+                //     if (c.indexOf(name) == 0) {
+                //     return c.substring(name.length, c.length);
+                //     }
+                // }
+                // return "";
+                // }
+                // var token_user=getCookie("token_login_user_gsm")
+                // console.log(token_user)
+                // if(token_user==""){
+                //     window.location="login"
+                // }
+
 			    if($("#elm1").length > 0){
 			        tinymce.init({
 			            selector: "textarea#elm1",

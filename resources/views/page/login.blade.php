@@ -1,8 +1,9 @@
 @extends('layout.basiclayout')
 @section('content')
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link href="assets/plugins/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{{asset('assets/plugins/pace_master/themes/blue/pace-theme-minimal.css')}}">
+<script src="{{asset('assets/plugins/pace_master/pace.js')}}" type="text/javascript"></script>
 
 
 <div class="account-pages"></div>

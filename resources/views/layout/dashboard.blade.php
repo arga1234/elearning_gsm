@@ -248,14 +248,10 @@
                                     <li><a href="{{ url('/materiadvanced') }}">Level Advanced</a></li>
                                 </ul>
                         </li>
-                       
-                            {{-- <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class=" ti-pencil-alt"></i><span class="label label-success pull-right">2</span><span>Linimasa Perubahan</span></span> </a>
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ url('/uploadperubahan') }}">Uplaod Perubahan Anda</a></li>
-                                    <li><a href="{{ url('/perubahangurulain') }}">Lihat Perubahan Guru Lain</a></li>
-                                </ul>
-                            </li> --}}
+                        <li class="has_sub">
+                                <a href="{{ url('/pendampingan') }}" class="waves-effect"><i class="fa fa-comment-o"></i> <span> Pendampingan </span></a>
+                            </li>
+
                         </ul>
                         <div class="clearfix"></div>
                     </div>

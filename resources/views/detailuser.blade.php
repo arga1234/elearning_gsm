@@ -1,5 +1,6 @@
 @extends('layout.form')
 @section('content')
+
 <style>
 .title{
     text-align:center;
@@ -7,15 +8,38 @@
     font-family: 'Passion One', cursive;
     letter-spacing: 3px;
 }
+.date{
+    float: left;
+    border-bottom: 3px solid #71b6f9;
+}
+.day {
+    font-size: 22px;
+    color: #333;
+    font-weight: 600;
+    line-height: 22px;
+}
 
+.month {
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+.tes{
+    margin-left:-20px
+}
 @media only screen and (max-width: 600px) {
-    .title{
-
+.title{
     font-size:30px;
+}
+.tes{
+    margin-left:50px
+}
+}
 
-}
-}
+
 </style>
+
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->                      
@@ -36,38 +60,38 @@
                                              <div class="col-md-4">
                                                 <h5><b>Nama :</b></h5>
                                                 <p class="text-muted m-b-15 font-13" id="name">
-                                                    This is Example Text
+                                                    Loading
                                                 </p>
 
                                                 <h5><b>Tempat Lahir :</b></h5>
                                                 <p class="text-muted m-b-15 font-13" id="birthplace">
-                                                    This is Example Text
+                                                    Loading
                                                 </p>
                                                 <h5><b>Tanggal Lahir :</b></h5>
                                                 <p class="text-muted m-b-15 font-13" id="birthdate">
-                                                    This is Example Text
+                                                    Loading
                                                 </p>
                                                 <h5><b>Nomor WA :</b></h5>
                                                 <p class="text-muted m-b-15 font-13" id="phone">
-                                                    This is Example Text
+                                                    Loading
                                                 </p>
                                              </div>
                                              <div class="col-md-4">
                                                 <h5><b>Sudah Ikut Workshop :</b></h5>
                                                 <p class="text-muted m-b-15 font-13" id="attendedWorkshop">
-                                                    This is Example Text
+                                                    Loading
                                                 </p>
                                                 <h5><b>Gender :</b></h5>
                                                 <p class="text-muted m-b-15 font-13" id="gender">
-                                                    This is Example Text
+                                                    Loading
                                                 </p>
                                                 <h5><b>Posisi di Sekolah :</b></h5>
                                                 <p class="text-muted m-b-15 font-13" id="position">
-                                                    This is Example Text
+                                                    Loading
                                                 </p>
                                                 <h5><b>Pendidikan Terakhir :</b></h5>
                                                 <p class="text-muted m-b-15 font-13" id="lastEducation">
-                                                    This is Example Text
+                                                    Loading
                                                 </p>
                                                 <input type="text" id="id" style="display:none">
                                                 
@@ -81,80 +105,129 @@
                                     </div>
                                 </div>
                                 
-                                <div class="row">
-                                    <div class="col-md-12">
+                                <div class="row" >
+                                    <div class="col-md-4">
                                     <div class="panel panel-color panel-custom">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Linimasi Perubahan User</h3>
+                                                <h3 class="panel-title">Modul Diambil</h3>
                                             </div>
-                                            <div class="panel-body">
-                                                       <!-- blog content -->
-                                 <div class="blog-box-one">
-                                        <div class="cover-wrapper">
-                                            <div id="blog-slider" class="carousel slide" data-ride="carousel">
-                                                <!-- Indicators -->
-                                                <ol class="carousel-indicators m-b-0">
-                                                    <li data-target="#blog-slider" data-slide-to="0"
-                                                        class="active"></li>
-                                                    <li data-target="#blog-slider" data-slide-to="1"></li>
-                                                    <li data-target="#blog-slider" data-slide-to="2"></li>
-                                                </ol>
-                                                <!-- Wrapper for slides -->
-                                                <div class="carousel-inner" role="listbox">
-                                                    <div class="item active">
-                                                        <img alt="Blog-img" src="assets/images/blogs/1.jpg" class="img-responsive"/>
+                                            <div class="panel-body" style="height: 300px;overflow: auto;">
+                                                <div class="row" style="margin-bottom:20px">
+                                                    <div class="col-md-3">
+                                                        <div class="date">
+                                                                <span class="day">11</span><br>
+                                                                <span class="month">Nov</span>
+                                                            </div>
                                                     </div>
-                                                    <div class="item">
-                                                        <img alt="Blog-img" src="assets/images/blogs/2.jpg" class="img-responsive"/>
-                                                    </div>
-                                                    <div class="item">
-                                                        <img alt="Blog-img" src="assets/images/blogs/6.jpg" class="img-responsive"/>
+                                                    <div class="col-md-9 tes">
+                                                        <p style="margin-bottom:1px"><b>Materi Pertama</b></p>
+                                                        <p style="margin-top:0px" >Kategori : Ekosistem Positif</p>
+                                                        <p style="margin-top:0px" >Level : Basic</p>
                                                     </div>
                                                 </div>
-                                            </div>
-    
-                                        </div>
-                                        <div class="post-info">
-                                            <div class="date">
-                                                <span class="day">11</span><br>
-                                                <span class="month">Feb</span>
-                                            </div>
-    
-                                            <div class="meta-container">
-                                                <a href="#">
-                                                    <h4 class="text-overflow m-t-0">Beautiful Image Blog Post</h4>
-                                                </a>
-                                                <div class="font-13">
-                                                    <span class="meta">Posted by James in <a href="#"><b>Web Design</b></a></span>
+                                                <hr>
+                                                <div class="row" style="margin-bottom:20px">
+                                                        <div class="col-md-3">
+                                                                <div class="date">
+                                                                        <span class="day">12</span><br>
+                                                                        <span class="month">Nov</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col-md-9 tes">
+                                                                <p style="margin-bottom:1px"><b>Materi Kedua</b></p>
+                                                                <p style="margin-top:0px" >Kategori : Ekosistem Positif</p>
+                                                                <p style="margin-top:0px" >Level : Basic</p>
+                                                            </div>
                                                 </div>
-                                            </div>
-    
-                                            <p class="text-muted m-b-0">
-                                                Nunc nec dui vitae urna cursus lacinia. In
-                                                venenatis eget justo in dictum. Vestibulum
-                                                auctor raesent quisnm.
-                                            </p>
-    
-                                            <div class="row m-t-10">
-                                                <div class="col-xs-6">
-                                                    <div class="m-t-10 blog-widget-action">
-                                                        <a href="javascript:void(0)">
-                                                            <i class="mdi md-favorite"></i> <span>34</span>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <i class="mdi md-comment"></i> <span>58</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 text-right">
-                                                    <a href="" class="btn btn-sm waves-effect btn-white">Share</a>
-                                                </div>
-                                            </div>    
-                                        </div>
-                                    </div><!-- end blog -->
+                                                    
                                             </div>
                                         </div>
                                     </div> 
+                                    <div class="col-md-4">
+                                        <div class="panel panel-color panel-custom">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">Tantangan Dijawab</h3>
+                                                </div>
+                                                <div class="panel-body" style="height: 300px;overflow: auto;">
+                                                    <div class="row" style="margin-bottom:20px;">
+                                                        <div class="col-md-12" style="text-align:center">
+                                                          <img src="assets/images/open-book.png" alt="image" class="" width="200"/>
+                                                        </div>
+                                                            <div class="col-md-3">
+                                                                <div class="date">
+                                                                        <span class="day">11</span><br>
+                                                                        <span class="month">Nov</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col-md-9 tes">
+                                                                <p style="margin-bottom:1px"><b>Judul Tantangan 1</b></p>
+                                                                <p style="margin-top:0px"> Modul :  Materi Pertama </p>
+                                                                <p style="margin-top:0px" >Kategori : Ekosistem Positif</p>
+                                                                <p style="margin-top:0px"> Level :  Basic </p>
+                                                            </div>
+                                                        </div>
+                                                    <hr>
+                                                    <div class="row" style="margin-bottom:20px;">
+                                                            <div class="col-md-12" style="text-align:center">
+                                                              <img src="assets/images/open-book.png" alt="image" class="" width="200"/>
+                                                            </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="date">
+                                                                            <span class="day">12</span><br>
+                                                                            <span class="month">Nov</span>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-9 tes">
+                                                                    <p style="margin-bottom:1px"><b>Judul Tantangan 2</b></p>
+                                                                    <p style="margin-top:0px"> Modul :  Materi Kedua </p>
+                                                                    <p style="margin-top:0px" >Kategori : Ekosistem Positif</p>
+                                                                    <p style="margin-top:0px"> Level :  Advanced </p>
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="col-md-4">
+                                            <div class="panel panel-color panel-custom">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">Tantangan Dinilai</h3>
+                                                    </div>
+                                                    <div class="panel-body" style="height: 300px;overflow: auto;">
+                                                            <div class="row" style="margin-bottom:20px;">
+                                                                <div class="col-md-3">
+                                                                    <div class="date">
+                                                                            <span class="day">11</span><br>
+                                                                            <span class="month">Nov</span>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-9 tes">
+                                                                    <p style="margin-bottom:5px"><b>Tantangan Pertama</b></p>
+                                                                    <p style="margin-top:0px" >Rating :</p>
+                                                                    <p style="margin-top:0px"> Modul :  Materi Pertama </p>
+                                                                    <p style="margin-top:0px" >Kategori : Ekosistem Positif</p>
+                                                                    <p style="margin-top:0px"> Level :  Basic </p>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row" style="margin-bottom:20px">
+                                                                    <div class="col-md-3">
+                                                                            <div class="date">
+                                                                                    <span class="day">12</span><br>
+                                                                                    <span class="month">Nov</span>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="col-md-9 tes">
+                                                                            <p style="margin-bottom:5px"><b>Tantangan Kedua</b></p>
+                                                                            <p style="margin-top:-1px" >Rating :</p>
+                                                                            <p style="margin-top:0px"> Modul :  Materi Pertama </p>
+                                                                            <p style="margin-top:0px" >Kategori : Ekosistem Positif</p>
+                                                                            <p style="margin-top:0px"> Level :  Basic </p>
+                                                                        </div>
+                                                            </div>
+                                                                
+                                                        </div>
+                                                </div>
+                                            </div> 
                                 </div>
                               
     

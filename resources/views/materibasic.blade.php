@@ -113,12 +113,24 @@
                                 }
 
                                 var data_id_enrolled = JSON.parse(localStorage.getItem("module_enrolled"))
+                                var data_id_answered= JSON.parse(localStorage.getItem("module_answered"))
+                                var data_id_scored = JSON.parse(localStorage.getItem("module_scored"))
                                 var data_user = JSON.parse(localStorage.getItem("data_user_elearning_gsm"))
                                
                                 for(var i = 0; i<jumlah_materi;i++){
-                                    var arraycontainsturtles = (data_id_enrolled.indexOf(data[i]._id) > -1);
-                                    if(arraycontainsturtles){
+                                    var arraycontainsidenrolled = (data_id_enrolled.indexOf(data[i]._id) > -1);
+                                    if(arraycontainsidenrolled){
                                         document.getElementById(data[i]._id).innerHTML = "Sudah Mengambil Modul"
+                                    }
+
+                                    var arraycontainsidanswered = (data_id_answered.indexOf(data[i]._id) > -1);
+                                    if(arraycontainsidanswered){
+                                        document.getElementById(data[i]._id).innerHTML = "Tantangan Telah Dikerjakan"
+                                    }
+
+                                    var arraycontainsidscored = (data_id_scored.indexOf(data[i]._id) > -1);
+                                    if(arraycontainsidscored){
+                                        document.getElementById(data[i]._id).innerHTML = "Tantangan Sudah Dinilai"
                                     }
                                 }
                             }).fail(function(data,status){
@@ -128,10 +140,10 @@
                 }
                     $(document).ready(function(){
                         var data_user = JSON.parse(localStorage.getItem("data_user_elearning_gsm"))
-                        console.log(data_user)
                         var banyak_quiz = data_user.quiz.length
-                        console.log(banyak_quiz)
                         var data_id_module = ''
+                        var module_answered = ''
+                        var module_scored = ''
                         for(var i = 0; i<banyak_quiz ; i++){
                             if(data_user.quiz[i].flag == "enrolled"){
                             data_id_module += '"'
@@ -143,21 +155,54 @@
                                 data_id_module += ','
                             }
                             }
+
+                            if(data_user.quiz[i].flag == "answered"){
+                                module_answered += '"'
+                                module_answered += data_user.quiz[i].modul_id
+                                module_answered += '"'
+                                if(i==banyak_quiz-1){
+                                module_answered += ''
+                                }else{
+                                module_answered += ','
+                            }
+                            }
+
+                            if(data_user.quiz[i].flag == "scored"){
+                                module_scored += '"'
+                                module_scored += data_user.quiz[i].modul_id
+                                module_scored += '"'
+                                if(i==banyak_quiz-1){
+                                    module_scored += ''
+                                }else{
+                                    module_scored += ','
+                            }
+                            }
                         }
-                        console.log(data_id_module)
+                        
+                        // Ini untuk modul enrolled
                         var data_id_module2 = data_id_module.replace(/^[,\s]+|[,\s]+$/g, '').replace(/,[,\s]*,/g, ',');
                         var data_id_module3 = '['+data_id_module2+']'
                         var data_id_module4 = JSON.parse(data_id_module3)
-                        console.log(data_id_module4)
                         localStorage.setItem("module_enrolled", JSON.stringify(data_id_module4))
+
+                        // Ini untuk modul answered 
+                        var module_answered2 = module_answered.replace(/^[,\s]+|[,\s]+$/g, '').replace(/,[,\s]*,/g, ',');
+                        var module_answered3 = '['+module_answered2+']'
+                        var module_answered4 = JSON.parse(module_answered3)
+                        localStorage.setItem("module_answered", JSON.stringify(module_answered4))
+
+                        // Ini untuk modul scored 
+                        var module_scored2 = module_scored.replace(/^[,\s]+|[,\s]+$/g, '').replace(/,[,\s]*,/g, ',');
+                        var module_scored3 = '['+module_scored2+']'
+                        var module_scored4 = JSON.parse(module_scored3)
+                        localStorage.setItem("module_scored", JSON.stringify(module_scored4))
+
 
                         $(document).ajaxStart(function() { Pace.restart(); });
                         $.ajax({
                             type: 'GET',
                             url :"http://207.148.68.185/api/v1/modul/aspect-grade/ekosistem-positif/basic"
                             }).done(function(data, status){
-                                console.log(data)
-                                console.log(status)
                                 var jumlah_materi = data.length
                                
                                 

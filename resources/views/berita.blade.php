@@ -16,6 +16,9 @@
 }
 }
 </style>
+        <link rel="stylesheet" href="{{asset('assets/plugins/pace_master/themes/blue/pace-theme-minimal.css')}}">
+        <script src="{{asset('assets/plugins/pace_master/pace.js')}}" type="text/javascript"></script>
+
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->                      
@@ -56,8 +59,13 @@
             </div>
             <script>
             $(document).ready(function(){
-                $.get("https://www.sekolahmenyenangkan.org/wp-json/wp/v2/posts", function(data, status){
-                  var jumlah_berita = data.length -1
+                $(document).ajaxStart(function() { Pace.restart(); });
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://www.sekolahmenyenangkan.org/wp-json/wp/v2/posts',
+                   })
+                   .done(function(data, status){
+                    var jumlah_berita = data.length -1
                   var bulan_string = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
                   for(var i = 0; i<jumlah_berita;i++){
                     var data_tanggal = new Date (data[i].date)
@@ -95,10 +103,7 @@
                         '</div>'+
                     '</div>'+
                 '</div>' 
-
-                    )
-                  }
-                  
+                )}
                 })
             })
             </script>

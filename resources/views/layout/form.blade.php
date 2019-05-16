@@ -18,6 +18,7 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         {{-- Select --}}
+
         <link href="{{asset('assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css')}}" rel="stylesheet" />
         <link href="{{asset('assets/plugins/switchery/css/switchery.min.css')}}" rel="stylesheet" />
         <link href="{{asset('assets/plugins/multiselect/css/multi-select.css')}}"  rel="stylesheet" type="text/css" />
@@ -235,6 +236,9 @@
                                     <li><a href="{{ url('/materiadvanced') }}">Level Advanced</a></li>
                                 </ul>
                         </li>
+                        <li class="has_sub">
+                                <a href="{{ url('/pendampingan') }}" class="waves-effect"><i class="fa fa-comment-o"></i> <span> Pendampingan </span></a>
+                            </li>
                        
                             {{-- <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class=" ti-pencil-alt"></i><span class="label label-success pull-right">2</span><span>Linimasa Perubahan</span></span> </a>

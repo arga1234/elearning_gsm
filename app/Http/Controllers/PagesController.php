@@ -51,4 +51,8 @@ class PagesController extends Controller
     public function resetpassword(){
         return view('page/resetpassword');
     }
+
+    public function pendampingan(){
+        return view('pendampingan');
+    }
 }

@@ -87,12 +87,13 @@
                                                     <div class="row">
                                                             <div style="margin-top:20px" class="col-md-8">
                                                                     <h5><b>Ubah Foto Profil</b></h5>
-                                                                    <input type="file" class="filestyle" data-icon="false" data-buttonname="btn-white">
-                                                                </div>
-                                                                <div style="margin-top:20px" class="col-md-8">
-                                                                        <h5><b>Hapus Foto Profil</b></h5>
-                                                                        <button style="float:left" type="button" class="btn btn-default waves-effect waves-light">Delete</button>
-                                                                    </div>
+                                                                    <input type="file" class="filestyle" data-icon="false" data-buttonname="btn-white" name="images" id="file"> 
+                                                            </div>
+                                                    </div>
+                                                    <div class="row">
+                                                                <div class="col-md-4">
+                                                                        <button class="btn btn-info btn-block text-uppercase waves-effect waves-light" type="button" onclick="upload()" style="margin-top:20px">Upload</button>
+                                                                </div>                                                        
                                                     </div>
                                                 </div>
                                                 
@@ -113,6 +114,35 @@
             <!-- End Right content here -->
             <!-- ============================================================== -->
             <script>
+            function upload(){
+                var data = new FormData();
+                jQuery.each(jQuery('#file')[0].files, function(i, file) {
+                    data.append('file-'+i, file);
+                });
+
+                jQuery.ajax({
+                url: 'http://207.148.68.185/api/v1/users/photo-profile',
+                data: data,
+                cache: false,
+                processData: false, 
+                contentType: false,
+                headers : {
+                    'Content-Type' : 'application/json',
+                    'Accept' : 'application/json',
+                    'Authorization' : 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjUyYWNlYTExNDUzOGE4NzVhNGQ3NDliYTdhYjNiMWUzNTg1NjEwZjA3YjFmNTA1YTY0NmY2ZWFhYzMzODBjZjdmZmIzYjEyODZlZjU5NjY2In0.eyJhdWQiOiI1Y2JmMzM5ZmY1NjFkYTAyMGU2ZTFmNzIiLCJqdGkiOiI1MmFjZWExMTQ1MzhhODc1YTRkNzQ5YmE3YWIzYjFlMzU4NTYxMGYwN2IxZjUwNWE2NDZmNmVhYWMzMzgwY2Y3ZmZiM2IxMjg2ZWY1OTY2NiIsImlhdCI6MTU1NzY3MDQ0NiwibmJmIjoxNTU3NjcwNDQ2LCJleHAiOjE1ODkyOTI4NDYsInN1YiI6IjVjZDA0MGE5YzQxNTU1MDAwNzUyNjU1MiIsInNjb3BlcyI6WyJ1c2VyIl19.KhMpeodPpEig_7unfPnLWNE-5b8Zxu7KN5_5AingB2z5fikyT_xP3llso7BPRgSuolqHQ2UZiekQerCClB8cngUo36r8CJWbYH8YMImzteIkTCAMX--FuKc0h03Lyicc8sAHeSa922fZTVU4rN3POS3bqjgd8x6cpP-xeVeNOZqU2pUQG_FipoWgPgvPadGeN60O3VllBE5NJ7yYQVwb0JUk3AE2V3ZxnOqXD3FYgDIPlOvpN8Ed0c7hkle0y6Gl-Ii-lYxsR9AxAPieWvSpxmdDqKOAlgCxSq51Mzz5sMtw5BEcskfOWLk11t5BddGuvweBEqDc7h09L91gxMFA0hIfC99xz_7oWYQHeEXVzO6lVQGIc6BHM3xI_n8sbfKJb6DHfgdn86fXFd-6DxSTugtmmXK1_7QvFttLBmZeg1H-GfULpsYfKdGSJtt6szdr9XFoW0oq0S88YaK7pxXcfJTk0Ip888y29fEc_Fq_D0dnKTiS6KtwwvFHwWa5vztUFs1yBw-iOLqxG9t1yAYZizA4vzRFP97lAmc6vYNGfFQDL5fBPre5CT3z3HdJx6UJCvYqSAprHjY3xqvc1fUAFy7KwMxR0R_XR5PbH9K4t-hcUuWUYtpSkBAF0fJqpOuUXSfZZNL_38X57TxdWMHHJBPgiNQBbhNzA6veYEHpcbI'
+                },
+                method: 'POST',
+                type: 'POST', 
+                success: function(data){
+                  
+                    console.log(data)
+                }, 
+                fail : function(data){
+                    alert("Error")
+                    console.log(data)
+                }
+            });
+            }
             $(document).ready(function(){
                 var data_diri = JSON.parse(localStorage.getItem("data_user_elearning_gsm"))
                 document.getElementById('id').value= data_diri._id
